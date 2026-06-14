@@ -86,7 +86,7 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
         </button>
       </div>
 
-      {sent ? <p className="mt-4 rounded-md bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">Demande sauvegardee. Vous pouvez la voir dans l'admin demo.</p> : null}
+      {sent ? <p className="mt-4 rounded-md bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">Votre demande est bien enregistree. Nous revenons vers vous rapidement.</p> : null}
     </form>
   );
 }

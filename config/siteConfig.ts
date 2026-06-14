@@ -11,13 +11,13 @@ const commonHours = [
 ] satisfies SiteConfig["hours"];
 
 const baseColors = {
-  bg: "248 250 252",
+  bg: "250 247 242",
   surface: "255 255 255",
   text: "15 23 42",
-  muted: "100 116 139",
-  primary: "17 24 39",
-  secondary: "226 232 240",
-  accent: "190 132 70"
+  muted: "105 96 84",
+  primary: "24 24 27",
+  secondary: "231 225 214",
+  accent: "180 128 72"
 } satisfies SiteConfig["colors"];
 
 export const activeTemplate = "garagiste";
@@ -82,7 +82,7 @@ export const siteTemplates = {
     city: "Lyon",
     tagline: "Couleur, coupe et soin dans un salon lumineux et expert.",
     description: "Un salon chaleureux pour sublimer cheveux courts, longs, boucles ou colores.",
-    colors: { ...baseColors, primary: "88 28 135", accent: "217 119 6" },
+    colors: { bg: "253 250 252", surface: "255 255 255", text: "31 41 55", muted: "107 114 128", primary: "126 58 89", secondary: "244 226 234", accent: "190 132 70" },
     promo: { enabled: true, text: "Diagnostic couleur offert avant toute transformation." },
     cta: { label: "Prendre rendez-vous", href: "#reservation" },
     contact: { address: "8 avenue Victor Hugo, 69002 Lyon", phone: "+33412345678", whatsapp: "+33412345678", email: "bonjour@maisoneclat.fr" },
@@ -123,7 +123,7 @@ export const siteTemplates = {
     city: "Bordeaux",
     tagline: "Entretien, diagnostic et reparation sans surprise.",
     description: "Un garage de proximite pour entretenir votre vehicule avec devis clair et suivi rapide.",
-    colors: { ...baseColors, primary: "30 64 175", accent: "234 88 12" },
+    colors: { bg: "241 245 249", surface: "255 255 255", text: "15 23 42", muted: "71 85 105", primary: "15 23 42", secondary: "203 213 225", accent: "234 88 12" },
     promo: { enabled: true, text: "Controle securite offert avec toute revision complete." },
     cta: { label: "Demander un devis", href: "#reservation" },
     contact: { address: "42 route des Artisans, 33000 Bordeaux", phone: "+33512345678", whatsapp: "+33512345678", email: "contact@garagecentral.fr" },
@@ -164,7 +164,7 @@ export const siteTemplates = {
     city: "Nantes",
     tagline: "Depannage rapide, devis clair, intervention soignee.",
     description: "Depannage fuite, debouchage, chauffe-eau et renovation plomberie pour particuliers et pros.",
-    colors: { ...baseColors, primary: "14 116 144", accent: "37 99 235" },
+    colors: { bg: "248 252 255", surface: "255 255 255", text: "15 23 42", muted: "71 85 105", primary: "14 116 144", secondary: "219 234 254", accent: "37 99 235" },
     promo: { enabled: true, text: "Deplacement offert dans un rayon de 5 km pour toute intervention planifiee." },
     cta: { label: "Demander une intervention", href: "#reservation" },
     contact: { address: "5 rue des Lilas, 44000 Nantes", phone: "+33212345678", whatsapp: "+33212345678", email: "urgence@plomberieexpress.fr" },
@@ -205,7 +205,7 @@ export const siteTemplates = {
     city: "Toulouse",
     tagline: "Soins visage, epilation et bien-etre dans un cadre apaisant.",
     description: "Un institut elegant pour prendre soin de vous avec des protocoles precis et personnalisables.",
-    colors: { ...baseColors, primary: "157 23 77", accent: "219 39 119" },
+    colors: { bg: "253 248 246", surface: "255 255 255", text: "60 45 45", muted: "120 99 99", primary: "157 23 77", secondary: "252 231 243", accent: "219 39 119" },
     promo: { enabled: true, text: "Soin decouverte visage a tarif doux pour les nouvelles clientes." },
     cta: { label: "Reserver un soin", href: "#reservation" },
     contact: { address: "18 place du Marche, 31000 Toulouse", phone: "+33598765432", whatsapp: "+33598765432", email: "hello@institutlumiere.fr" },

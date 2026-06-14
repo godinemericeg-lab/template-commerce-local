@@ -41,12 +41,33 @@ Pour creer un nouveau metier, ajoute un nouvel objet dans `siteTemplates`, puis 
 - horaires
 - adresse, telephone, WhatsApp, email
 - avis clients
-- galerie
 - FAQ
 - SEO local
 - CTA principal
 - zones desservies
 - textes du formulaire
+
+## Remplacer les images proprement
+
+La direction artistique est geree dans `config/visualConfig.ts`.
+
+Chaque metier contient :
+
+- image hero
+- images de galerie
+- images de services
+- ambiance visuelle
+- traitement d'image
+
+Conseils :
+
+1. Utilisez en priorite des photos du vrai commerce.
+2. Sinon, cherchez sur Unsplash ou Pexels avec une requete precise : `clean auto repair garage diagnostic`, `premium barber chair tools`, `bright hair salon brushing`, `plumber under sink repair`, `beauty spa treatment room`.
+3. Gardez les memes ratios : hero large, services en paysage, galerie mix paysage/portrait/square.
+4. Evitez les images trop generiques, les personnes trop posees, les faux logos, les textes dans l'image et les visuels qui semblent generes par IA.
+5. Remplacez uniquement les `src` dans `visualConfig.ts`, en gardant des `alt` descriptifs.
+
+Pour creer un nouveau metier, ajoutez aussi une entree dans `visualConfigs` avec la meme cle que dans `siteTemplates`.
 
 ## Leads et admin
 

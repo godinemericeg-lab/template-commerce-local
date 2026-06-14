@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileStickyBar } from "@/components/MobileStickyBar";
 import { siteConfig } from "@/config/siteConfig";
+import { visualConfig } from "@/config/visualConfig";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
 import "./globals.css";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     description: siteConfig.seo.description,
     type: "website",
     locale: "fr_FR",
-    images: siteConfig.seo.image ? [{ url: siteConfig.seo.image }] : undefined
+    images: [{ url: visualConfig.heroImage, alt: visualConfig.heroAlt }]
   },
   robots: {
     index: true,

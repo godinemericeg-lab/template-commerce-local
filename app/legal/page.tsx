@@ -9,7 +9,7 @@ export default function LegalPage() {
           <p>Editeur du site : {siteConfig.businessName}, {siteConfig.profession}.</p>
           <p>Adresse : {siteConfig.contact.address}</p>
           <p>Contact : {siteConfig.contact.email} - {siteConfig.contact.phone}</p>
-          <p>Ce template est fourni comme base de demonstration. Remplacez ces informations par les donnees legales reelles du client final avant mise en ligne.</p>
+          <p>Ces informations doivent etre completees avec les donnees legales exactes de l'etablissement avant mise en ligne definitive.</p>
         </div>
       </div>
     </main>

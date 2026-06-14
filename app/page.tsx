@@ -24,9 +24,9 @@ export default function HomePage() {
         <div className="container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className="eyebrow">Reservation</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Transformez une visite en client reserve.</h2>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Demandez un creneau ou un devis sans aller-retour.</h2>
             <p className="mt-4 text-brand-muted">
-              Le formulaire s'adapte au metier, calcule une estimation simple et sauvegarde chaque demande en local.
+              Indiquez le service souhaite, vos disponibilites et les details utiles. L'equipe revient vers vous avec une reponse claire.
             </p>
           </div>
           <BookingForm source="formulaire" />

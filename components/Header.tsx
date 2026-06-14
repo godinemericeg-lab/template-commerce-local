@@ -26,7 +26,7 @@ export function Header() {
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
           <Link className="text-brand-muted transition hover:text-brand-text" href="/services">Services</Link>
           <Link className="text-brand-muted transition hover:text-brand-text" href="/contact">Contact</Link>
-          <Link className="text-brand-muted transition hover:text-brand-text" href="/admin">Admin demo</Link>
+          <Link className="text-brand-muted transition hover:text-brand-text" href="/admin">Espace pro</Link>
         </nav>
         <div className="flex items-center gap-3">
           <span className={`hidden items-center gap-2 rounded-full px-3 py-2 text-xs font-bold sm:inline-flex ${status.isOpen ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>

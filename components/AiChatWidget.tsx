@@ -57,7 +57,7 @@ export function AiChatWidget() {
           <div className="flex items-center justify-between bg-brand-primary px-4 py-4 text-white">
             <div>
               <p className="text-sm font-bold">Assistant local</p>
-              <p className="text-xs opacity-80">FAQ, recommandation, lead localStorage</p>
+              <p className="text-xs opacity-80">Questions, conseils et demande de rappel</p>
             </div>
             <button onClick={() => setOpen(false)} className="rounded-md bg-white/10 px-2 py-1 text-sm">Fermer</button>
           </div>
