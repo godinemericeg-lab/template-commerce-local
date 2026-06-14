@@ -8,10 +8,12 @@ export type VisualImage = {
   alt: string;
   caption?: string;
   ratio?: "wide" | "square" | "portrait" | "landscape";
+  fallbackSrc?: string;
 };
 
 export type BusinessVisualConfig = {
   heroImage: string;
+  heroFallbackImage?: string;
   heroAlt: string;
   galleryImages: VisualImage[];
   serviceImages: Record<string, VisualImage>;
@@ -63,22 +65,23 @@ export const visualConfigs = {
     }
   },
   garagiste: {
-    heroImage: img("photo-1487754180451-c456f719a1fc", 1800),
+    heroImage: "/images/garage/hero.jpg",
+    heroFallbackImage: img("photo-1487754180451-c456f719a1fc", 1800),
     heroAlt: "Atelier automobile propre avec mecanicien travaillant sur un moteur",
     visualMood: "technique",
     imageTreatment: "coolFilter",
     styleRule: "Sombre, technique, robuste, avec bleus profonds et accents orange.",
     galleryImages: [
-      { src: img("photo-1487754180451-c456f719a1fc"), alt: "Mecanicien inspectant un moteur dans un atelier propre", caption: "Atelier mecanique", ratio: "landscape" },
-      { src: img("photo-1632823471565-1ecdf5c8619f"), alt: "Diagnostic automobile avec outils professionnels", caption: "Diagnostic electronique", ratio: "square" },
-      { src: img("photo-1613214149922-f1809c99b414"), alt: "Entretien moteur d'un vehicule en garage", caption: "Entretien moteur", ratio: "portrait" },
-      { src: img("photo-1504222490345-c075b6008014"), alt: "Roue et frein controle par un technicien", caption: "Pneus et freins", ratio: "landscape" },
-      { src: img("photo-1606577924006-27d39b132ae2"), alt: "Reception propre d'un garage automobile", caption: "Accueil client", ratio: "landscape" }
+      { src: "/images/garage/workshop.jpg", fallbackSrc: img("photo-1487754180451-c456f719a1fc"), alt: "Mecanicien inspectant un moteur dans un atelier propre", caption: "Atelier propre et organise", ratio: "landscape" },
+      { src: "/images/garage/diagnostic.jpg", fallbackSrc: img("photo-1632823471565-1ecdf5c8619f"), alt: "Diagnostic automobile avec outils professionnels", caption: "Diagnostic electronique", ratio: "square" },
+      { src: "/images/garage/revision.jpg", fallbackSrc: img("photo-1613214149922-f1809c99b414"), alt: "Entretien moteur d'un vehicule en garage", caption: "Entretien moteur", ratio: "portrait" },
+      { src: "/images/garage/freinage.jpg", fallbackSrc: img("photo-1504222490345-c075b6008014"), alt: "Roue et frein controle par un technicien", caption: "Freinage et pneus", ratio: "landscape" },
+      { src: "/images/garage/accueil.jpg", fallbackSrc: img("photo-1606577924006-27d39b132ae2"), alt: "Reception propre d'un garage automobile", caption: "Accueil et suivi client", ratio: "landscape" }
     ],
     serviceImages: {
-      revision: { src: img("photo-1487754180451-c456f719a1fc", 900), alt: "Revision auto dans un atelier mecanique", ratio: "landscape" },
-      freinage: { src: img("photo-1504222490345-c075b6008014", 900), alt: "Controle des pneus et freins", ratio: "landscape" },
-      diagnostic: { src: img("photo-1632823471565-1ecdf5c8619f", 900), alt: "Diagnostic electronique automobile", ratio: "landscape" }
+      revision: { src: "/images/garage/revision.jpg", fallbackSrc: img("photo-1487754180451-c456f719a1fc", 900), alt: "Revision auto dans un atelier mecanique", ratio: "landscape" },
+      freinage: { src: "/images/garage/freinage.jpg", fallbackSrc: img("photo-1504222490345-c075b6008014", 900), alt: "Controle des pneus et freins", ratio: "landscape" },
+      diagnostic: { src: "/images/garage/diagnostic.jpg", fallbackSrc: img("photo-1632823471565-1ecdf5c8619f", 900), alt: "Diagnostic electronique automobile", ratio: "landscape" }
     }
   },
   plombier: {

@@ -22,6 +22,7 @@ export function GallerySection() {
               <SmartImage
                 src={item.src}
                 alt={item.alt}
+                fallbackSrc={item.fallbackSrc}
                 aspect={item.ratio ?? "landscape"}
                 overlay="softGradient"
                 className="rounded-none"

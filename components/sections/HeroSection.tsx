@@ -2,7 +2,7 @@ import { SmartImage } from "@/components/SmartImage";
 import { siteConfig } from "@/config/siteConfig";
 import { visualConfig } from "@/config/visualConfig";
 import { getOpenStatus } from "@/lib/business";
-import { toWhatsAppUrl } from "@/lib/utils";
+import { formatPhone } from "@/lib/utils";
 
 export function HeroSection() {
   const status = getOpenStatus(siteConfig.hours);
@@ -14,6 +14,7 @@ export function HeroSection() {
         <SmartImage
           src={visualConfig.heroImage}
           alt={visualConfig.heroAlt}
+          fallbackSrc={visualConfig.heroFallbackImage}
           aspect="wide"
           priority
           sizes="100vw"
@@ -36,8 +37,8 @@ export function HeroSection() {
             <a href={siteConfig.cta.href} className="rounded-full bg-white px-6 py-4 text-center text-sm font-bold text-brand-primary shadow-lift transition hover:-translate-y-0.5">
               {siteConfig.cta.label}
             </a>
-            <a href={toWhatsAppUrl(siteConfig.contact.whatsapp, `Bonjour ${siteConfig.businessName}, je souhaite reserver.`)} className="rounded-full border border-white/35 bg-white/8 px-6 py-4 text-center text-sm font-bold text-white backdrop-blur transition hover:bg-white/14">
-              WhatsApp rapide
+            <a href={`tel:${siteConfig.contact.phone}`} className="rounded-full border border-white/35 bg-white/8 px-6 py-4 text-center text-sm font-bold text-white backdrop-blur transition hover:bg-white/14">
+              Appeler le garage
             </a>
           </div>
         </div>
@@ -45,22 +46,22 @@ export function HeroSection() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="text-sm font-semibold text-white/70">Note clients</p>
-              <p className="mt-1 text-3xl font-black">5.0/5</p>
+              <p className="mt-1 text-3xl font-black">4.9/5</p>
             </div>
-            <div className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-primary">Avis verifies</div>
+            <div className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-primary">Garage local</div>
           </div>
-          <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="mt-5 grid gap-3">
             <div className="rounded-md border border-white/12 bg-black/18 p-4">
-              <p className="text-2xl font-black">{minPrice} EUR+</p>
-              <p className="mt-1 text-sm text-white/70">Prix d'appel</p>
+              <p className="text-2xl font-black">Diagnostic des {minPrice} EUR</p>
+              <p className="mt-1 text-sm text-white/70">Lecture defauts, controle et priorites claires.</p>
             </div>
             <div className="rounded-md border border-white/12 bg-black/18 p-4">
-              <p className="text-2xl font-black">24h</p>
-              <p className="mt-1 text-sm text-white/70">Rappel rapide</p>
+              <p className="text-2xl font-black">Devis avant intervention</p>
+              <p className="mt-1 text-sm text-white/70">Pieces et main-d'oeuvre validees avec vous.</p>
             </div>
           </div>
           <p className="mt-5 rounded-md bg-white/10 p-4 text-sm leading-6 text-white/78">
-            {visualConfig.styleRule}
+            Reponse rapide par telephone ou WhatsApp : {formatPhone(siteConfig.contact.phone)}
           </p>
         </aside>
       </div>

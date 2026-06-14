@@ -36,9 +36,9 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>
           <p className="eyebrow">Demande rapide</p>
-          <h3 className="mt-2 text-2xl font-black">Recevoir un rappel</h3>
+          <h3 className="mt-2 text-2xl font-black">Demander un devis garage</h3>
         </div>
-        <span className="rounded-full bg-brand-accent/12 px-3 py-1 text-xs font-bold text-brand-primary">Reponse rapide</span>
+        <span className="rounded-full bg-brand-accent/12 px-3 py-1 text-xs font-bold text-brand-primary">Rappel rapide</span>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">
@@ -82,7 +82,7 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
           Estimation : <span className="font-bold text-brand-text">a partir de {estimatedPrice ?? "-"} EUR</span>
         </p>
         <button className="button-primary rounded-full px-5 py-3 text-sm font-semibold" type="submit">
-          Envoyer la demande
+          Envoyer au garage
         </button>
       </div>
 

@@ -21,6 +21,7 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
                 <SmartImage
                   src={serviceImage?.src ?? visualConfig.heroImage}
                   alt={serviceImage?.alt ?? service.name}
+                  fallbackSrc={serviceImage?.fallbackSrc ?? visualConfig.heroFallbackImage}
                   aspect="landscape"
                   overlay={false}
                   className="rounded-none"

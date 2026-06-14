@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ImageTreatment } from "@/config/visualConfig";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ type SmartImageProps = {
   priority?: boolean;
   sizes?: string;
   overlay?: ImageTreatment | boolean;
+  fallbackSrc?: string;
 };
 
 const aspectClasses = {
@@ -40,11 +41,19 @@ export function SmartImage({
   aspect = "landscape",
   priority = false,
   sizes = "(min-width: 1024px) 50vw, 100vw",
-  overlay
+  overlay,
+  fallbackSrc
 }: SmartImageProps) {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [loaded, setLoaded] = useState(false);
   const [broken, setBroken] = useState(false);
   const treatment = typeof overlay === "string" ? overlay : overlay ? "softGradient" : "none";
+
+  useEffect(() => {
+    setCurrentSrc(src);
+    setLoaded(false);
+    setBroken(false);
+  }, [src]);
 
   return (
     <div className={cn("relative isolate overflow-hidden rounded-lg bg-brand-secondary", aspectClasses[aspect], className)}>
@@ -53,14 +62,21 @@ export function SmartImage({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--color-accent)/0.22),transparent_32%),linear-gradient(135deg,rgb(var(--color-secondary)),rgb(var(--color-bg)))]" />
       ) : (
         <Image
-          src={src}
+          src={currentSrc}
           alt={alt}
           fill
           priority={priority}
           sizes={sizes}
           className={cn("object-cover transition duration-500", loaded ? "opacity-100" : "opacity-0", imageClassName)}
           onLoad={() => setLoaded(true)}
-          onError={() => setBroken(true)}
+          onError={() => {
+            if (fallbackSrc && currentSrc !== fallbackSrc) {
+              setCurrentSrc(fallbackSrc);
+              setLoaded(false);
+              return;
+            }
+            setBroken(true);
+          }}
         />
       )}
       {treatment !== "none" ? <div className={cn("absolute inset-0", overlayClasses[treatment])} /> : null}

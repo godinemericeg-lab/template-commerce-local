@@ -9,11 +9,11 @@ export function MobileStickyBar() {
       <a className="rounded-md border border-brand-secondary px-3 py-3 text-center text-sm font-bold" href={`tel:${siteConfig.contact.phone}`}>
         Appeler
       </a>
-      <a className="rounded-md border border-brand-secondary px-3 py-3 text-center text-sm font-bold" href={toWhatsAppUrl(siteConfig.contact.whatsapp, `Bonjour ${siteConfig.businessName}, je souhaite reserver.`)}>
+      <a className="rounded-md border border-brand-secondary px-3 py-3 text-center text-sm font-bold" href={toWhatsAppUrl(siteConfig.contact.whatsapp, `Bonjour ${siteConfig.businessName}, je souhaite un devis pour mon vehicule.`)}>
         WhatsApp
       </a>
       <a className="button-primary rounded-md px-3 py-3 text-center text-sm font-bold" href="#reservation">
-        Reserver
+        Devis
       </a>
     </div>
   );

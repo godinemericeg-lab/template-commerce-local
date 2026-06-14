@@ -53,16 +53,16 @@ export function LeadAdmin() {
   if (!unlocked) {
     return (
       <div className="mx-auto max-w-md rounded-lg premium-card p-6">
-        <p className="eyebrow">Admin demo</p>
+        <p className="eyebrow">Espace equipe</p>
         <h1 className="mt-3 text-3xl font-black">Gestion des leads</h1>
-        <p className="mt-3 text-sm text-brand-muted">Mot de passe demo : admin123</p>
+        <p className="mt-3 text-sm text-brand-muted">Acces reserve a l'equipe du garage.</p>
         <form
           className="mt-6 grid gap-3"
           onSubmit={(event) => {
             event.preventDefault();
             const ok = password === "admin123";
             setUnlocked(ok);
-            setError(ok ? "" : "Mot de passe incorrect pour cette demo.");
+            setError(ok ? "" : "Mot de passe incorrect.");
           }}
         >
           <input className="focus-ring min-w-0 rounded-md border border-brand-secondary px-3 py-3" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Mot de passe" />
@@ -77,7 +77,7 @@ export function LeadAdmin() {
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="eyebrow">Admin demo</p>
+          <p className="eyebrow">Espace equipe</p>
           <h1 className="mt-3 text-4xl font-black">Pipeline commercial</h1>
           <p className="mt-3 text-brand-muted">Recherchez, filtrez, exportez et mettez a jour les demandes recues.</p>
         </div>
