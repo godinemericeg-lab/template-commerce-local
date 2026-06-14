@@ -1,12 +1,13 @@
 import { SmartImage } from "@/components/SmartImage";
 import { siteConfig } from "@/config/siteConfig";
-import { visualConfig } from "@/config/visualConfig";
+import { visualConfig, type BusinessVisualConfig } from "@/config/visualConfig";
 import { getOpenStatus } from "@/lib/business";
 import { formatPhone } from "@/lib/utils";
 
 export function HeroSection() {
   const status = getOpenStatus(siteConfig.hours);
   const minPrice = Math.min(...siteConfig.services.map((item) => item.priceFrom));
+  const visuals = visualConfig as BusinessVisualConfig;
 
   return (
     <section className="relative isolate overflow-hidden bg-brand-primary text-white">
@@ -14,7 +15,7 @@ export function HeroSection() {
         <SmartImage
           src={visualConfig.heroImage}
           alt={visualConfig.heroAlt}
-          fallbackSrc={visualConfig.heroFallbackImage}
+          fallbackSrc={visuals.heroFallbackImage}
           aspect="wide"
           priority
           sizes="100vw"

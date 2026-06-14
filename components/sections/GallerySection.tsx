@@ -1,6 +1,6 @@
 import { SmartImage } from "@/components/SmartImage";
 import { siteConfig } from "@/config/siteConfig";
-import { visualConfig } from "@/config/visualConfig";
+import { visualConfig, type VisualImage } from "@/config/visualConfig";
 
 export function GallerySection() {
   return (
@@ -12,7 +12,7 @@ export function GallerySection() {
           <p className="mt-4 text-brand-muted">Des visuels sobres, realistes et proches de ce que vos clients veulent voir avant de reserver.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-6">
-          {visualConfig.galleryImages.map((item, index) => (
+          {(visualConfig.galleryImages as VisualImage[]).map((item, index) => (
             <figure
               key={`${item.caption}-${item.src}`}
               className={`premium-card overflow-hidden rounded-lg transition hover:-translate-y-1 hover:shadow-lift ${

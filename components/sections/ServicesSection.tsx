@@ -1,8 +1,10 @@
 import { SmartImage } from "@/components/SmartImage";
 import { siteConfig } from "@/config/siteConfig";
-import { visualConfig, type VisualImage } from "@/config/visualConfig";
+import { visualConfig, type BusinessVisualConfig, type VisualImage } from "@/config/visualConfig";
 
 export function ServicesSection({ compact = false }: { compact?: boolean }) {
+  const visuals = visualConfig as BusinessVisualConfig;
+
   return (
     <section className={compact ? "pb-16" : "section"}>
       <div className="container">
@@ -21,7 +23,7 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
                 <SmartImage
                   src={serviceImage?.src ?? visualConfig.heroImage}
                   alt={serviceImage?.alt ?? service.name}
-                  fallbackSrc={serviceImage?.fallbackSrc ?? visualConfig.heroFallbackImage}
+                  fallbackSrc={serviceImage?.fallbackSrc ?? visuals.heroFallbackImage}
                   aspect="landscape"
                   overlay={false}
                   className="rounded-none"
