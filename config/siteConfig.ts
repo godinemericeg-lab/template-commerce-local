@@ -20,7 +20,7 @@ const baseColors = {
   accent: "180 128 72"
 } satisfies SiteConfig["colors"];
 
-export const activeTemplate = "garagiste";
+export const activeTemplate = "institut";
 
 // Pour creer un nouveau metier, ajoute seulement un nouvel objet ici,
 // puis remplace activeTemplate par sa cle.
