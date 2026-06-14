@@ -2,7 +2,7 @@
 
 import type { Lead, LeadStatus } from "@/types/site";
 
-const STORAGE_KEY = "local-business-template-leads";
+const STORAGE_KEY = "local-business-client-requests";
 
 export function getLeads(): Lead[] {
   if (typeof window === "undefined") return [];
@@ -64,7 +64,7 @@ export function exportLeadsCsv(leads = getLeads()) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = "leads.csv";
+  link.download = "demandes-clients.csv";
   link.click();
   URL.revokeObjectURL(url);
 }

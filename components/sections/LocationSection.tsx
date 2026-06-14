@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { copyConfig } from "@/config/copyConfig";
 import { siteConfig } from "@/config/siteConfig";
 
@@ -5,7 +6,7 @@ export function LocationSection() {
   return (
     <section className="section">
       <div className="container grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch">
-        <div>
+        <SectionReveal>
           <p className="eyebrow">Localisation</p>
           <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">{copyConfig.locationTitle}</h2>
           <p className="mt-4 max-w-xl text-white/66">{copyConfig.locationIntro}</p>
@@ -25,9 +26,9 @@ export function LocationSection() {
               </div>
             ))}
           </div>
-        </div>
+        </SectionReveal>
 
-        <div className="premium-card overflow-hidden rounded-[32px] p-4">
+        <SectionReveal delay="short" className="premium-card overflow-hidden rounded-[32px] p-4">
           <div className="relative min-h-[410px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgb(227_232_240),rgb(248_250_252))] p-5">
             <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgb(100_116_139/0.24)_1px,transparent_1px),linear-gradient(90deg,rgb(100_116_139/0.24)_1px,transparent_1px)] [background-size:44px_44px]" />
             <div className="absolute left-[18%] top-[28%] h-20 w-[68%] -rotate-6 rounded-full border border-slate-300/70" />
@@ -54,7 +55,7 @@ export function LocationSection() {
               </div>
             </div>
           </div>
-        </div>
+        </SectionReveal>
       </div>
     </section>
   );

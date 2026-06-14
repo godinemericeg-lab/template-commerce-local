@@ -33,7 +33,7 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="premium-card rounded-[30px] p-5 sm:p-6">
+    <form onSubmit={onSubmit} className="booking-form-premium premium-card rounded-[30px] p-5 sm:p-6">
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>
           <p className="eyebrow">Demande rapide</p>
@@ -41,28 +41,36 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
         </div>
         <span className="rounded-full bg-brand-accent/12 px-3 py-1 text-xs font-bold text-brand-primary">Rappel rapide</span>
       </div>
+      <div className="mb-5 grid gap-2 sm:grid-cols-3">
+        {["Besoin", "Coordonnees", "Confirmation"].map((step, index) => (
+          <div key={step} className="form-step-pill">
+            <span>{index + 1}</span>
+            {step}
+          </div>
+        ))}
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">
           Nom
-          <input required name="name" className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm" placeholder="Votre nom" />
+          <input required name="name" className="form-field focus-ring" placeholder="Votre nom" />
         </label>
         <label className="grid gap-2 text-sm font-semibold">
           Telephone
-          <input required name="phone" className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm" placeholder="06 12 34 56 78" />
+          <input required name="phone" className="form-field focus-ring" placeholder="06 12 34 56 78" />
         </label>
         <label className="grid gap-2 text-sm font-semibold">
           Email
-          <input name="email" type="email" className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm" placeholder="vous@email.fr" />
+          <input name="email" type="email" className="form-field focus-ring" placeholder="vous@email.fr" />
         </label>
         <label className="grid gap-2 text-sm font-semibold">
           {siteConfig.form.dateLabel}
-          <input name="desiredDate" className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm" placeholder="Demain 14h, vendredi..." />
+          <input name="desiredDate" className="form-field focus-ring" placeholder="Demain 14h, vendredi..." />
         </label>
       </div>
 
       <label className="mt-4 grid gap-2 text-sm font-semibold">
         {siteConfig.form.needLabel}
-        <select value={serviceId} onChange={(event) => setServiceId(event.target.value)} className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm">
+        <select value={serviceId} onChange={(event) => setServiceId(event.target.value)} className="form-field focus-ring">
           {siteConfig.services.map((service) => (
             <option key={service.id} value={service.id}>
               {service.name} - des {service.priceFrom} EUR
@@ -75,7 +83,7 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
 
       <label className="mt-4 grid gap-2 text-sm font-semibold">
         Details utiles
-        <textarea name="message" rows={4} className="focus-ring rounded-2xl border border-brand-secondary bg-white/82 px-4 py-3 font-normal shadow-sm" placeholder={siteConfig.form.messagePlaceholder} />
+        <textarea name="message" rows={4} className="form-field focus-ring" placeholder={siteConfig.form.messagePlaceholder} />
       </label>
 
       <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-brand-secondary bg-brand-bg/72 p-4 sm:flex-row sm:items-center sm:justify-between">
@@ -87,7 +95,7 @@ export function BookingForm({ source }: { source: "formulaire" | "chat" }) {
         </button>
       </div>
 
-      {sent ? <p className="mt-4 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">Votre demande est bien enregistree. Nous revenons vers vous rapidement.</p> : null}
+      {sent ? <p className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700 shadow-soft">Votre demande est bien enregistree. Nous revenons vers vous rapidement.</p> : null}
     </form>
   );
 }

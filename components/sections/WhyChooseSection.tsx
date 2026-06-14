@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/ui/SectionReveal";
 import { siteConfig } from "@/config/siteConfig";
 
 const reasonsByTemplate: Record<string, { title: string; intro: string; items: string[][] }> = {
@@ -57,22 +58,35 @@ export function WhyChooseSection() {
   const content = reasonsByTemplate[siteConfig.template] ?? reasonsByTemplate.garagiste;
 
   return (
-    <section className="section">
+    <section className="section section-asymmetric">
       <div className="container">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
+        <div className="why-constellation">
+          <SectionReveal className="why-copy">
             <p className="eyebrow">Pourquoi nous choisir</p>
             <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">{content.title}</h2>
             <p className="mt-4 max-w-xl text-white/66">{content.intro}</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {content.items.map(([title, text]) => (
-              <div key={title} className="premium-card hover-lift rounded-[26px] p-5">
-                <h3 className="font-black">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-brand-muted">{text}</p>
-              </div>
-            ))}
-          </div>
+            <div className="why-floating-proof">
+              <span>01</span>
+              <strong>Un parcours clair</strong>
+              <p>Demande, rappel, confirmation : chaque etape reste simple.</p>
+            </div>
+          </SectionReveal>
+          <SectionReveal delay="short" className="why-orbit">
+            <div className="why-feature-card">
+              <span className="why-feature-index">Signature</span>
+              <h3>{content.items[0]?.[0]}</h3>
+              <p>{content.items[0]?.[1]}</p>
+            </div>
+            <div className="why-orbit-grid">
+              {content.items.slice(1).map(([title, text], index) => (
+                <div key={title} className={`why-orbit-tile why-orbit-tile-${index + 1}`}>
+                  <span>0{index + 2}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </SectionReveal>
         </div>
       </div>
     </section>

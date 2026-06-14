@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/siteConfig";
 import { getOpenStatus } from "@/lib/business";
 import { formatPhone } from "@/lib/utils";
 import { PremiumLink } from "@/components/ui/PremiumButton";
 import { InfoBadge } from "@/components/ui/InfoBadge";
+import { FloatingNavbar } from "@/components/ui/FloatingNavbar";
 
 export function Header() {
   const status = getOpenStatus(siteConfig.hours);
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
@@ -18,7 +21,7 @@ export function Header() {
         </div>
       ) : null}
       <div className="container">
-        <div className="flex items-center justify-between gap-3 rounded-[26px] border border-white/16 bg-white/[0.10] px-3 py-3 shadow-[0_18px_70px_rgb(0_0_0/0.26)] backdrop-blur-2xl sm:px-4">
+        <FloatingNavbar>
           <Link href="/" className="flex min-w-0 items-center gap-3">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/18 bg-white/14 text-sm font-black text-white shadow-soft">
               {siteConfig.businessName.slice(0, 1)}
@@ -50,10 +53,30 @@ export function Header() {
           <PremiumLink href={siteConfig.cta.href} className="hidden px-5 py-2.5 text-sm md:inline-flex">
             {siteConfig.cta.label}
           </PremiumLink>
-          <PremiumLink href={`tel:${siteConfig.contact.phone}`} variant="secondary" className="px-4 py-2.5 text-sm md:hidden">
-            Appeler
-          </PremiumLink>
-        </div>
+          <button
+            onClick={() => setOpen((value) => !value)}
+            className="rounded-full border border-white/14 bg-white/10 px-4 py-2.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/16 md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            Menu
+          </button>
+        </FloatingNavbar>
+        {open ? (
+          <div id="mobile-menu" className="mt-3 rounded-[26px] border border-white/14 bg-[rgb(8_13_26/0.82)] p-3 text-white shadow-soft backdrop-blur-2xl md:hidden">
+            <div className="grid gap-2">
+              <Link onClick={() => setOpen(false)} href="/services" className="rounded-2xl bg-white/10 px-4 py-3 text-sm font-bold">
+                Services
+              </Link>
+              <Link onClick={() => setOpen(false)} href="/contact" className="rounded-2xl bg-white/10 px-4 py-3 text-sm font-bold">
+                Contact
+              </Link>
+              <a onClick={() => setOpen(false)} href={`tel:${siteConfig.contact.phone}`} className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-brand-text">
+                Appeler maintenant
+              </a>
+            </div>
+          </div>
+        ) : null}
       </div>
     </header>
   );

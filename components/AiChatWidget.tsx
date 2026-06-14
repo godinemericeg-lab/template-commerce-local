@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { ChatBubbleGlass } from "@/components/ui/ChatBubbleGlass";
 import { copyConfig } from "@/config/copyConfig";
 import { siteConfig } from "@/config/siteConfig";
 import { answerWithLocalAgent, type AgentDraft } from "@/lib/aiAgent";
@@ -90,9 +91,9 @@ export function AiChatWidget() {
           </form>
         </div>
       ) : null}
-      <button onClick={() => setOpen((value) => !value)} className="button-primary liquid-ring px-5 py-4 text-sm font-bold">
+      <ChatBubbleGlass onClick={() => setOpen((value) => !value)}>
         Chat + {copyConfig.bookingSubmit.replace("Envoyer la ", "")}
-      </button>
+      </ChatBubbleGlass>
     </div>
   );
 }

@@ -55,7 +55,7 @@ export function LeadAdmin() {
     return (
       <div className="mx-auto max-w-md rounded-[30px] premium-card p-6">
         <p className="eyebrow">Espace equipe</p>
-        <h1 className="mt-3 text-3xl font-black">Gestion des leads</h1>
+        <h1 className="mt-3 text-3xl font-black">Demandes clients</h1>
         <p className="mt-3 text-sm text-brand-muted">Acces reserve a l'equipe {siteConfig.businessName}.</p>
         <form
           className="mt-6 grid gap-3"
@@ -67,7 +67,7 @@ export function LeadAdmin() {
           }}
         >
           <input className="focus-ring min-w-0 rounded-2xl border border-brand-secondary bg-white/86 px-4 py-3" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Mot de passe" />
-          <button className="button-primary px-4 py-3 text-sm font-semibold">Entrer dans le dashboard</button>
+          <button className="button-primary px-4 py-3 text-sm font-semibold">Ouvrir le suivi</button>
           {error ? <p className="rounded-2xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{error}</p> : null}
         </form>
       </div>
@@ -79,11 +79,11 @@ export function LeadAdmin() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="eyebrow">Espace equipe</p>
-          <h1 className="mt-3 text-4xl font-black text-white">Pipeline commercial</h1>
+          <h1 className="mt-3 text-4xl font-black text-white">Suivi des demandes</h1>
           <p className="mt-3 text-white/66">Recherchez, filtrez, exportez et mettez a jour les demandes recues.</p>
         </div>
         <button onClick={() => exportLeadsCsv(filteredLeads)} className="button-primary px-5 py-3 text-sm font-semibold">
-          Export CSV filtre
+          Export CSV
         </button>
       </div>
 
@@ -119,7 +119,7 @@ export function LeadAdmin() {
 
       <div className="mt-6 overflow-hidden rounded-[28px] premium-card">
         {filteredLeads.length === 0 ? (
-          <p className="p-6 text-brand-muted">Aucun lead ne correspond a ce filtre. Envoyez une demande via le formulaire ou le chat.</p>
+          <p className="p-6 text-brand-muted">Aucune demande ne correspond a ce filtre. Envoyez une demande via le formulaire ou le chat.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[980px] text-left text-sm">
