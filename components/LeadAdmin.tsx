@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { siteConfig } from "@/config/siteConfig";
 import type { Lead, LeadStatus } from "@/types/site";
 import { deleteLead, exportLeadsCsv, getLeads, updateLeadStatus } from "@/lib/leads";
 
@@ -52,10 +53,10 @@ export function LeadAdmin() {
 
   if (!unlocked) {
     return (
-      <div className="mx-auto max-w-md rounded-lg premium-card p-6">
+      <div className="mx-auto max-w-md rounded-[30px] premium-card p-6">
         <p className="eyebrow">Espace equipe</p>
         <h1 className="mt-3 text-3xl font-black">Gestion des leads</h1>
-        <p className="mt-3 text-sm text-brand-muted">Acces reserve a l'equipe du garage.</p>
+        <p className="mt-3 text-sm text-brand-muted">Acces reserve a l'equipe {siteConfig.businessName}.</p>
         <form
           className="mt-6 grid gap-3"
           onSubmit={(event) => {
@@ -65,9 +66,9 @@ export function LeadAdmin() {
             setError(ok ? "" : "Mot de passe incorrect.");
           }}
         >
-          <input className="focus-ring min-w-0 rounded-md border border-brand-secondary px-3 py-3" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Mot de passe" />
-          <button className="button-primary rounded-md px-4 py-3 text-sm font-semibold">Entrer dans le dashboard</button>
-          {error ? <p className="rounded-md bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{error}</p> : null}
+          <input className="focus-ring min-w-0 rounded-2xl border border-brand-secondary bg-white/86 px-4 py-3" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Mot de passe" />
+          <button className="button-primary px-4 py-3 text-sm font-semibold">Entrer dans le dashboard</button>
+          {error ? <p className="rounded-2xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">{error}</p> : null}
         </form>
       </div>
     );
@@ -78,10 +79,10 @@ export function LeadAdmin() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="eyebrow">Espace equipe</p>
-          <h1 className="mt-3 text-4xl font-black">Pipeline commercial</h1>
-          <p className="mt-3 text-brand-muted">Recherchez, filtrez, exportez et mettez a jour les demandes recues.</p>
+          <h1 className="mt-3 text-4xl font-black text-white">Pipeline commercial</h1>
+          <p className="mt-3 text-white/66">Recherchez, filtrez, exportez et mettez a jour les demandes recues.</p>
         </div>
-        <button onClick={() => exportLeadsCsv(filteredLeads)} className="button-primary rounded-full px-5 py-3 text-sm font-semibold">
+        <button onClick={() => exportLeadsCsv(filteredLeads)} className="button-primary px-5 py-3 text-sm font-semibold">
           Export CSV filtre
         </button>
       </div>
@@ -91,7 +92,7 @@ export function LeadAdmin() {
           <button
             key={status}
             onClick={() => setStatusFilter(statusFilter === status ? "tous" : status)}
-            className={`rounded-lg border p-4 text-left transition ${statusFilter === status ? "border-brand-primary bg-brand-primary text-white shadow-lift" : "border-brand-secondary bg-brand-surface hover:-translate-y-0.5 hover:shadow-soft"}`}
+            className={`rounded-[24px] border p-4 text-left transition ${statusFilter === status ? "border-white/20 bg-white text-brand-text shadow-lift" : "border-white/14 bg-white/10 text-white backdrop-blur-xl hover:-translate-y-0.5 hover:bg-white/15 hover:shadow-soft"}`}
           >
             <p className="text-sm font-semibold opacity-75">{statusLabels[status]}</p>
             <p className="mt-2 text-3xl font-black">{counts[status] ?? 0}</p>
@@ -99,15 +100,15 @@ export function LeadAdmin() {
         ))}
       </div>
 
-      <div className="mt-6 rounded-lg premium-card p-4">
+      <div className="mt-6 rounded-[26px] premium-card p-4">
         <div className="grid gap-3 md:grid-cols-[1fr_220px]">
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="focus-ring rounded-md border border-brand-secondary px-3 py-3 text-sm"
+            className="focus-ring rounded-2xl border border-brand-secondary bg-white/86 px-4 py-3 text-sm"
             placeholder="Rechercher nom, telephone, email, besoin..."
           />
-          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as LeadStatus | "tous")} className="focus-ring rounded-md border border-brand-secondary px-3 py-3 text-sm">
+          <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value as LeadStatus | "tous")} className="focus-ring rounded-2xl border border-brand-secondary bg-white/86 px-4 py-3 text-sm">
             <option value="tous">Tous les statuts</option>
             {statuses.map((status) => (
               <option key={status} value={status}>{statusLabels[status]}</option>
@@ -116,13 +117,13 @@ export function LeadAdmin() {
         </div>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-lg premium-card">
+      <div className="mt-6 overflow-hidden rounded-[28px] premium-card">
         {filteredLeads.length === 0 ? (
           <p className="p-6 text-brand-muted">Aucun lead ne correspond a ce filtre. Envoyez une demande via le formulaire ou le chat.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[980px] text-left text-sm">
-              <thead className="bg-brand-bg text-xs uppercase text-brand-muted">
+              <thead className="bg-brand-bg/70 text-xs uppercase text-brand-muted">
                 <tr>
                   <th className="p-4">Client</th>
                   <th className="p-4">Besoin</th>
@@ -157,7 +158,7 @@ export function LeadAdmin() {
                           updateLeadStatus(lead.id, event.target.value as LeadStatus);
                           refresh();
                         }}
-                        className="focus-ring rounded-md border border-brand-secondary bg-white px-2 py-2"
+                        className="focus-ring rounded-2xl border border-brand-secondary bg-white px-3 py-2"
                       >
                         {statuses.map((status) => (
                           <option key={status} value={status}>{statusLabels[status]}</option>
@@ -172,7 +173,7 @@ export function LeadAdmin() {
                             refresh();
                           }
                         }}
-                        className="rounded-md border border-red-200 px-3 py-2 text-xs font-bold text-red-700 transition hover:bg-red-50"
+                        className="rounded-2xl border border-red-200 px-3 py-2 text-xs font-bold text-red-700 transition hover:bg-red-50"
                       >
                         Supprimer
                       </button>

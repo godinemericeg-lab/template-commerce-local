@@ -4,6 +4,7 @@ import { AiChatWidget } from "@/components/AiChatWidget";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileStickyBar } from "@/components/MobileStickyBar";
+import { GlowBackground } from "@/components/ui/GlowBackground";
 import { siteConfig } from "@/config/siteConfig";
 import { visualConfig } from "@/config/visualConfig";
 import { buildLocalBusinessJsonLd } from "@/lib/seo";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="fr" style={colorVars}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <GlowBackground />
         <Header />
         {children}
         <Footer />

@@ -1,21 +1,21 @@
 import { SmartImage } from "@/components/SmartImage";
-import { siteConfig } from "@/config/siteConfig";
+import { copyConfig } from "@/config/copyConfig";
 import { visualConfig, type VisualImage } from "@/config/visualConfig";
 
 export function GallerySection() {
   return (
-    <section className="section bg-brand-surface">
+    <section className="section">
       <div className="container">
-        <div className="mb-10 max-w-2xl">
+        <div className="mb-12 max-w-3xl">
           <p className="eyebrow">Galerie</p>
-          <h2 className="mt-3 text-3xl font-black sm:text-4xl">Un apercu concret du lieu et du savoir-faire.</h2>
-          <p className="mt-4 text-brand-muted">Des visuels sobres, realistes et proches de ce que vos clients veulent voir avant de reserver.</p>
+          <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">{copyConfig.galleryTitle}</h2>
+          <p className="mt-4 max-w-2xl text-white/66">{copyConfig.galleryIntro}</p>
         </div>
         <div className="grid gap-4 md:grid-cols-6">
           {(visualConfig.galleryImages as VisualImage[]).map((item, index) => (
             <figure
               key={`${item.caption}-${item.src}`}
-              className={`premium-card overflow-hidden rounded-lg transition hover:-translate-y-1 hover:shadow-lift ${
+              className={`premium-card hover-lift overflow-hidden rounded-[28px] ${
                 index === 0 || index === 3 ? "md:col-span-3" : "md:col-span-2"
               }`}
             >

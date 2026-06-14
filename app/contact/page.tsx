@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BookingForm } from "@/components/BookingForm";
 import { LocationSection } from "@/components/sections/LocationSection";
+import { PremiumLink } from "@/components/ui/PremiumButton";
+import { copyConfig } from "@/config/copyConfig";
 import { siteConfig } from "@/config/siteConfig";
 import { formatPhone, toWhatsAppUrl } from "@/lib/utils";
 
@@ -16,39 +18,37 @@ export default function ContactPage() {
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="eyebrow">Contact</p>
-            <h1 className="mt-3 text-4xl font-black sm:text-5xl">Expliquez-nous votre besoin, on vous rappelle rapidement.</h1>
-            <p className="mt-5 text-lg leading-8 text-brand-muted">
-              Voyant allume, revision a prevoir, bruit au freinage ou controle avant trajet : decrivez la situation et nous vous orientons vers le bon creneau.
-            </p>
+            <h1 className="mt-3 text-4xl font-black text-white sm:text-5xl">{copyConfig.contactTitle}</h1>
+            <p className="mt-5 text-lg leading-8 text-white/66">{copyConfig.contactIntro}</p>
             <div className="mt-7 grid gap-3 text-sm">
-              <div className="rounded-lg border border-brand-secondary bg-brand-surface p-4">
-                <p className="font-black">Garage Central</p>
+              <div className="premium-card rounded-[24px] p-4">
+                <p className="font-black">{siteConfig.businessName}</p>
                 <p className="mt-1 text-brand-muted">{siteConfig.contact.address}</p>
               </div>
-              <div className="rounded-lg border border-brand-secondary bg-brand-surface p-4">
+              <div className="premium-card rounded-[24px] p-4">
                 <p className="font-black">Telephone</p>
                 <p className="mt-1 text-brand-muted">{formatPhone(siteConfig.contact.phone)}</p>
               </div>
-              <div className="rounded-lg border border-brand-secondary bg-brand-surface p-4">
+              <div className="premium-card rounded-[24px] p-4">
                 <p className="font-black">Email</p>
                 <p className="mt-1 text-brand-muted">{siteConfig.contact.email}</p>
               </div>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a className="button-primary rounded-full px-5 py-3 text-sm font-semibold" href={`tel:${siteConfig.contact.phone}`}>
-                Appeler le garage
-              </a>
-              <a className="rounded-full border border-brand-secondary bg-brand-surface px-5 py-3 text-sm font-semibold" href={toWhatsAppUrl(siteConfig.contact.whatsapp, `Bonjour ${siteConfig.businessName}, je souhaite un devis pour mon vehicule.`)}>
-                WhatsApp devis
-              </a>
+              <PremiumLink className="px-5 py-3 text-sm" href={`tel:${siteConfig.contact.phone}`}>
+                {copyConfig.secondaryCta}
+              </PremiumLink>
+              <PremiumLink variant="secondary" className="px-5 py-3 text-sm" href={toWhatsAppUrl(siteConfig.contact.whatsapp, copyConfig.whatsappMessage)}>
+                WhatsApp direct
+              </PremiumLink>
             </div>
-            <div className="mt-8 rounded-lg bg-brand-primary p-5 text-white shadow-lift">
-              <p className="text-lg font-black">Besoin urgent ?</p>
+            <div className="mt-8 rounded-[28px] border border-white/14 bg-white/10 p-5 text-white shadow-lift backdrop-blur-xl">
+              <p className="text-lg font-black">{copyConfig.urgentTitle}</p>
               <p className="mt-2 text-sm leading-6 text-white/74">
-                Nous gardons des creneaux pour les diagnostics urgents selon disponibilite : voyant moteur, freinage, batterie ou probleme de demarrage.
+                {copyConfig.urgentText}
               </p>
             </div>
-            <div className="mt-6 rounded-lg border border-brand-secondary bg-brand-surface p-5">
+            <div className="mt-6 premium-card rounded-[28px] p-5">
               <p className="font-black">Horaires</p>
               <div className="mt-3 grid gap-2 text-sm text-brand-muted">
                 {siteConfig.hours.map((hour) => (

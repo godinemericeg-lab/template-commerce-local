@@ -57,17 +57,17 @@ export function WhyChooseSection() {
   const content = reasonsByTemplate[siteConfig.template] ?? reasonsByTemplate.garagiste;
 
   return (
-    <section className="section bg-brand-surface">
+    <section className="section">
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p className="eyebrow">Pourquoi nous choisir</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">{content.title}</h2>
-            <p className="mt-4 text-brand-muted">{content.intro}</p>
+            <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl lg:text-5xl">{content.title}</h2>
+            <p className="mt-4 max-w-xl text-white/66">{content.intro}</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {content.items.map(([title, text]) => (
-              <div key={title} className="rounded-lg border border-brand-secondary bg-brand-bg p-5 transition hover:-translate-y-0.5 hover:shadow-soft">
+              <div key={title} className="premium-card hover-lift rounded-[26px] p-5">
                 <h3 className="font-black">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-brand-muted">{text}</p>
               </div>
